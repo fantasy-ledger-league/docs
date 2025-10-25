@@ -21,6 +21,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             line-height: 1.6;
@@ -110,6 +114,14 @@
             background-position: center;
         }
 
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -121,13 +133,32 @@
             transition: all 0.3s ease;
             border: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            margin: 1rem;
+            white-space: nowrap;
         }
 
         .cta-button:hover {
             background: var(--button-hover);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
         }
 
         .social-links {
@@ -162,11 +193,22 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
+            border-color: rgba(129, 140, 248, 0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card h3 {
+            margin: 1rem 0;
+            color: var(--accent);
+        }
+
+        .feature-card img {
+            margin-bottom: 1rem;
         }
 
         .stats {
@@ -184,6 +226,14 @@
             backdrop-filter: blur(10px);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(129, 140, 248, 0.3);
         }
 
         .stat-number {
@@ -191,6 +241,20 @@
             font-weight: bold;
             color: var(--accent);
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -212,8 +276,11 @@
             <h1>Fantasy Ledger League</h1>
             <p class="subtitle">The Future of Fantasy Football Ownership</p>
             <div class="cta-buttons">
-                <a href="https://fantasy-ledger-league.github.io/docs/lite-paper.html" target="_blank" class="cta-button">Read Lite Paper</a>
-                <a href="#community" class="cta-button">Join Community</a>
+                <a href="https://fantasy-ledger-league.github.io/docs/lite-paper.html" target="_blank" class="cta-button">Lite Paper</a>
+                <a href="https://xrp.cafe/collection/fantasy-ledger-league-pro-2025" target="_blank" class="cta-button">Team NFTs <div style="font-size: 0.75rem; opacity: 0.8;">(Sold Out!)</div></a>
+                <a href="https://xrp.cafe/collection/fantasy-ledger-league-pro-fans-2025" target="_blank" class="cta-button">Fan NFTs <div style="font-size: 0.75rem; color: #4ade80;">(Mint: 3 XRP)</div></a>
+                <a href="https://xpmarket.com/token/FLL-r42NhnbGMKxAPTpUV8gAsL38PrrcL6P68H" target="_blank" class="cta-button">$FLL Token</a>
+                <a href="#community" class="cta-button">Discord</a>
             </div>
         </div>
     </section>
@@ -231,20 +298,20 @@
 
             <div class="stats">
                 <div class="stat-card">
-                    <div class="stat-number">12</div>
+                    <div class="stat-number">8</div>
                     <p>Exclusive Professional Teams</p>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <p>Fan Ownership Tiers</p>
+                    <div class="stat-number">1,600</div>
+                    <p>Total Fan NFTs</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200</div>
+                    <p>Fan NFTs per Team</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">50%</div>
                     <p>Championship Reward Pool</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">50%</div>
-                    <p>Guaranteed Floor Price</p>
                 </div>
             </div>
         </div>
@@ -259,21 +326,25 @@
                     <img src="assets/images/team-nfts.webp" alt="Team NFT" width="100">
                     <h3>Team NFTs</h3>
                     <p>Own an exclusive team NFT that grants you management rights and potential appreciation value.</p>
+                    <a href="https://xrp.cafe/collection/fantasy-ledger-league-pro-2025" target="_blank" class="cta-button" style="margin-top: 1rem;">View Collection</a>
                 </div>
                 <div class="feature-card">
                     <img src="assets/images/fan-nfts.webp" alt="Fan NFTs" width="100">
                     <h3>Fan NFTs</h3>
-                    <p>Support your favorite team and earn rewards through tiered fan ownership.</p>
+                    <p>Support your favorite team and earn rewards. All Fan NFTs receive equal rewards with only 3% royalty.</p>
+                    <a href="https://xrp.cafe/collection/fantasy-ledger-league-pro-fans-2025" target="_blank" class="cta-button" style="margin-top: 1rem;">View Collection</a>
                 </div>
                 <div class="feature-card">
                     <img src="assets/images/token.webp" alt="$FLL Token" width="100">
                     <h3>$FLL Token</h3>
                     <p>Participate in the league economy with our native XRPL token.</p>
+                    <a href="https://xpmarket.com/token/FLL-r42NhnbGMKxAPTpUV8gAsL38PrrcL6P68H" target="_blank" class="cta-button" style="margin-top: 1rem;">View Token</a>
                 </div>
                 <div class="feature-card">
                     <img src="assets/images/community.webp" alt="Community Features" width="100">
                     <h3>Active Community</h3>
                     <p>Engage with team-specific Discord channels, participate in strategy polls, and interact with other fans.</p>
+                    <a href="https://discord.gg/ktvKmEBeA9" target="_blank" class="cta-button" style="margin-top: 1rem;">Join Discord</a>
                 </div>
             </div>
         </div>
@@ -284,30 +355,33 @@
             <h2>Roadmap</h2>
             <img src="assets/images/roadmap.webp" alt="FLL Roadmap" width="200">
             <div class="features">
-                <div class="feature-card">
-                    <h3>Phase 1: Professional League Launch</h3>
+                <div class="feature-card" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.3);">
+                    <h3>Phase 1: Professional League Launch ✓</h3>
+                    <p style="color: #4ade80; font-weight: 600; margin-bottom: 1rem; text-align: center;">COMPLETE</p>
                     <ul>
-                        <li>Release 12 exclusive Team NFTs</li>
-                        <li>Integrate with Yahoo Fantasy Football</li>
-                        <li>Launch team-specific Discord channels</li>
-                        <li>Implement performance tracking system</li>
+                        <li>Released 8 exclusive Team NFTs (300 XRP each)</li>
+                        <li>Integrated with Sleeper app</li>
+                        <li>Launched team-specific Discord channels</li>
+                        <li>Implemented performance tracking system</li>
                     </ul>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" style="background: rgba(234, 179, 8, 0.15); border-color: rgba(234, 179, 8, 0.3);">
                     <h3>Phase 2: Ecosystem Expansion</h3>
+                    <p style="color: #fbbf24; font-weight: 600; margin-bottom: 1rem; text-align: center;">IN PROGRESS</p>
                     <ul>
-                        <li>Launch tiered Fan NFTs collection</li>
-                        <li>Deploy $FLL token on XRPL</li>
-                        <li>Implement reward distribution system</li>
-                        <li>Add token utility features (FAB boosts, priority waivers)</li>
+                        <li>Launched 1,600 Fan NFTs (3 XRP each, 200 per team)</li>
+                        <li>Deployed $FLL token on XRPL</li>
+                        <li>Implementing reward distribution system</li>
+                        <li>Adding token utility features (FAB boosts, priority waivers)</li>
                     </ul>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" style="background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">
                     <h3>Phase 3: League Growth</h3>
+                    <p style="color: #818cf8; font-weight: 600; margin-bottom: 1rem; text-align: center;">NEXT</p>
                     <ul>
-                        <li>Launch Semi-Pro League (120 teams)</li>
-                        <li>Launch Amateur League (1,200 teams)</li>
-                        <li>Introduce governance features</li>
+                        <li>Launch Semi-Pro Leagues (120 teams)</li>
+                        <li>Launch Amateur Leagues (1,200 teams)</li>
+                        <li>Introduce governance features (DAO)</li>
                         <li>Develop proprietary fantasy platform</li>
                     </ul>
                 </div>
@@ -318,6 +392,7 @@
                         <li>Enhanced prediction markets</li>
                         <li>Advanced fan engagement features</li>
                         <li>Cross-league competitions</li>
+                        <li>Revenue sharing with all NFT holders</li>
                     </ul>
                 </div>
             </div>
@@ -330,7 +405,7 @@
             <p>Be part of the future of fantasy football. Connect with other owners and fans!</p>
             <div class="social-links">
                 <a href="https://twitter.com/FantasyLedger" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://discord.gg/BdhN36rT" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://discord.gg/ktvKmEBeA9" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
         </div>
     </section>
