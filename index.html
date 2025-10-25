@@ -62,6 +62,22 @@
             color: var(--accent);
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
         section {
             padding: 5rem 2rem;
             min-height: 100vh;
@@ -143,6 +159,42 @@
         }
 
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav ul {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
+                gap: 0;
+                padding: 2rem 0;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav li {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav li:last-child {
+                border-bottom: none;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: stretch;
@@ -261,6 +313,11 @@
 </head>
 <body>
     <nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -411,12 +468,32 @@
     </section>
 
     <script>
+        // Smooth scroll for nav links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const section = document.querySelector(this.getAttribute('href'));
                 section.scrollIntoView({ behavior: 'smooth' });
+
+                // Close mobile menu after clicking a link
+                const navUl = document.querySelector('nav ul');
+                navUl.classList.remove('active');
             });
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navUl.classList.remove('active');
+            }
         });
     </script>
 </body>
