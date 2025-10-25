@@ -165,6 +165,7 @@
                 right: 1rem;
                 top: 50%;
                 transform: translateY(-50%);
+                z-index: 1001;
             }
 
             nav ul {
@@ -172,14 +173,15 @@
                 left: -100%;
                 top: 60px;
                 flex-direction: column;
-                background: rgba(0, 0, 0, 0.95);
+                background: linear-gradient(180deg, rgba(42, 22, 68, 0.98) 0%, rgba(26, 36, 86, 0.98) 100%);
                 backdrop-filter: blur(20px);
                 width: 100%;
                 text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
+                transition: left 0.3s ease-in-out;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
                 gap: 0;
-                padding: 2rem 0;
+                padding: 1rem 0;
+                border-bottom: 2px solid rgba(129, 140, 248, 0.3);
             }
 
             nav ul.active {
@@ -187,12 +189,26 @@
             }
 
             nav li {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
 
             nav li:last-child {
                 border-bottom: none;
+            }
+
+            nav a {
+                display: block;
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+                color: var(--text-primary);
+                transition: all 0.2s ease;
+            }
+
+            nav a:hover {
+                background: rgba(129, 140, 248, 0.2);
+                color: var(--accent);
+                padding-left: 2.5rem;
             }
 
             .cta-buttons {
